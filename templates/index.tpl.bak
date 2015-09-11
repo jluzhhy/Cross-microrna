@@ -1,0 +1,103 @@
+{{extends file="base.tpl"}}
+
+{{block name="extra_js"}}
+<script type="text/javascript">
+  var $J = jQuery.noConflict()
+  $J(document).ready(function() {
+    $J("div#tabs").tabs({
+      fx : { opacity: 'toggle', duration : 300 }
+    });
+     $J('button').qtip({
+          content : { attr : 'alt' }, 
+          style : { classes : 'qtip-shadow qtip-youtube'},
+          position : { at : 'bottom center', my : 'top center' }
+        });
+       
+  });
+</script>
+{{/block}}
+
+{{block name="extra_style"}}
+.dataTables_wrapper { min-height: 0; }
+div#tabs div { max-height: 450px; }
+
+ul li {margin: 10px 0;}
+ 
+{{/block}}
+
+{{block name="main"}}
+<div id="content">
+ <style type="text/css">
+          .input_file{-webkit-appearance: none;position:absolute;opacity:0;filter:alpha(opacity=0);cursor:pointer;}      
+  </style>
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">Overview</a></li>
+      <li><a href="#tabs-2">What's new</a></li>
+      <li><a href="#tabs-3">Cite us</a></li>
+    </ul>
+
+    <div id="tabs-1">
+     
+      <div style="float: middle;"> 
+        <img src="static/images/Home-page-design.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
+        <input id="b1" type="button" name="Button1" value="Button" onclick="javascript:window.location.href='annotate.php'" class="input_file" style="top:35pt;left:40pt;width:180pt;height:150pt;" title="Motif analysis by your data."/>
+                 <input id="b2" type="button" name="Button2" value="Button" onclick="javascript:window.location.href='displayspecies.php'" class="input_file" style="left:40pt;top:210pt;width:180pt;height:150pt;" title="Motif analysis by DOOR database."/>
+                         <input id="b5" type="button" name="Button5" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-1'" class="input_file" style="left:250pt;top:60pt;width:220pt;height:100pt;" title="Bobro Submit"/>
+                                  <input id="b5" type="button" name="Button8" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-4'" class="input_file" style="left:250pt;top:160pt;width:220pt;height:100pt;" title="MP3 Submit"/>
+                                          <input id="b6" type="button" name="Button6" value="Button" onclick="javascript:window.location.href='showmotifdatabase.php'" class="input_file" style="left:250pt;top:250pt;width:220pt;height:100pt;" title="Motif Database"/>
+                                         <input id="b3" type="button" name="Button3" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-2'" class="input_file" style="left:500pt;top:60pt;width:220pt;height:100pt;" title="Motif scan"/>
+        <input id="b4" type="button" name="Button4" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-3'" class="input_file" style="left:500pt;top:160pt;width:220pt;height:100pt;" title="Motif compare"/>
+        <input id="b4" type="button" name="Button7" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-2'" class="input_file" style="left:500pt;top:260pt;width:220pt;height:100pt;" title="Motif compare"/>
+
+         </div>
+    </div>
+    
+    <div id="tabs-2">
+
+        
+	 <p> 04/04/2014, the paper of DMINDA server has been accepted by <strong>Nucleic Acids Research<strong>.</p>
+         <p align="justify"> <br/>
+      DMINDA (<strong>D</strong>NA <strong>m</strong>otif <strong>i</strong>dentification a<strong>nd</strong> <strong>a</strong>nalyses) is an integrated web server for DNA motif identification and analyses. This website is freely available to all users and there is no login requirement. This server provides a suite of cis regulatory DNA motif analysis functions, which are important to elucidating the mechanism of transcriptional regulation:<br/><br/>  
+     (i) de novo motif finding for a given set of promoter sequences along with motif evaluation based on information extracted from a control set or a set of reference genomes;<br/> <br/>  
+     (ii) scanning motif instances of a query motif in provided genomic sequences;<br/> <br/>  
+     (iii) motif comparison and clustering of identified motifs; and <br/> <br/> 
+     (iv) co-occurrence analyses of query motifs in given promoter sequences.<br/> <br/> 
+     The server is powered by a backend computer cluster with over 150 computing nodes, and is particularly useful for DNA-motif analyses in prokaryotic genomes. We believe that DMINDA, as a new and comprehensive web server for cis regulatory motif finding and analyses, will benefit the genomic research community in general and prokaryotic genome researchers in particular. <br/> <br/> 
+        </p>
+    
+
+    </div>
+    
+    <div id="tabs-3">
+      <p align="justify"><br/>
+        Please cites the following papers if you use the result of the motif finding program:<br>
+      <p>1.Qin Ma*, Hanyuan Zhang*, Xizeng Mao, Chuan Zhou, Bingqiang Liu, Xin Chen, Ying Xu, DMINDA: An integrated web server for DNA motif identification and analyses, <em><strong>Nucleic Acids Research</strong></em>, doi: 10.1093/nar/gku315, 2014. <a href="http://www.ncbi.nlm.nih.gov/pubmed/?term=24753419" target="_blank"><strong>&nbsp(PMID:24753419)</strong></a>.  </p>
+       <p>2. Qin Ma, Bingqiang Liu, Chuan Zhou, Yanbin Yin, Guojun Li, Ying Xu,
+        BoBro2.0: An integrated toolkit for accurate prediction and analysis of cis regulatory elements at a genome scale. <em><strong> Bioinformatics,</strong></em> 10.1093/bioinformatics/btt397, 2013<a href="http://www.ncbi.nlm.nih.gov/pubmed/23846744" target="_blank"><strong>&nbsp(PMID:23846744)</strong></a></p>
+       <p>3. Guojun Li, Bingqiang Liu, Qin Ma, Ying Xu, A new framework for identifying cis-regulatory motifs in prokaryotes, <em><strong>Nucleic Acids Research</strong></em>. 2011 Apr;39(7):e42<a href="http://www.ncbi.nlm.nih.gov/pubmed/21149261" target="_blank"><strong>&nbsp(PMID:21149261)</strong></a></p>  
+       <p>4. Guojun. Li*,Bingqiang Liu*, Ying Xu, Accurate Recognition of cis Regulatory Motifs with the Correct Lengths in Prokaryotic Genomes, <em><strong>Nucleic Acids Research</strong></em>, Vol. 38, No. 2, e12, 2010.<a href="http://www.ncbi.nlm.nih.gov/pubmed/19906734" target="_blank">&nbsp<strong>(PMID:19906734)</strong></a></p>
+     
+      </p>
+    </div>
+  </div>
+
+</div>
+{{/block}}
+
+{{block name="foot"}}
+    <div id="foot">
+      <div id="copyright">
+        <p>
+          Copyright 2009-2013 &copy; <a href="http://csbl.bmb.uga.edu">CSBL</a>, <a href="http://www.uga.edu">UGA</a>. All rights reserved. <br/><a href="mailto:maqin@uga.edu" title="maqin@uga.edu" >Contact us: maqin@uga.edu</a>
+        
+        </p>
+      </div>
+       <a href="http://www.easycounter.com/">
+<img src="http://www.easycounter.com/counter.php?jluzhhyhit"
+border="0" alt="Hit Counters"></a>
+<br>Visitors since 02/05/2014
+    </div>
+
+
+{{/block}}

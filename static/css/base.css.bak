@@ -1,0 +1,225 @@
+/* General style */
+.shadow {
+  box-shadow: 3px 3px 4px #AAA;
+  -moz-box-shadow: 3px 3px 4px #AAA;
+  -webkit-box-shadow: 3px 3px 4px #AAA;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#AAAAAA')";
+  /* For IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#AAAAAA');
+}
+
+iframe { display:block; border:none; width:100%; }
+
+body { 
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: 12px;  margin: 0px; padding: 0px;
+    background-color: #EEEEEE;
+}
+
+h2 { 
+    padding: 0.2em; margin: 0;
+    font-style: normal; font-size: 1.1em; font-weight: bold;
+    background-color: #EEE;
+} 
+
+a,a:link,a:visited,b { color: blue; text-decoration: none; }
+
+img { border: 0px solid #FFF; }
+
+#pane {
+	width:1024px; background-color: white;
+        padding: 0.4em; margin: 2px auto; 
+}
+
+/* Header section */
+div#headlogo{vertical-align: middle; height: 120px;}
+div#headlogo h1{
+    font-style: normal; font-size: 3em; font-weight: bold;
+    color:#B4045F; background:#FFFFFF;
+	}
+	div#headlogo h2{
+	   padding:0px; margin: 2px auto; 
+    font-style: normal; font-size: 2em; font-weight: bold;
+    color:#B4045F; background:#FFFFFF;
+	}
+div#nav { 
+	z-Index:1;
+  background: url("nav_tile.png") repeat-x scroll left top transparent;
+  vertical-align: middle; height: 35px;
+}
+div#nav ul#nav {
+  list-style-type: none; font-size: 1.5em;
+  padding: 7px 0px; margin: 0;
+}
+div#nav ul#nav li{
+  display: inline; position: relative;
+  padding: 0 20px;
+ 
+}
+div#nav ul#nav li.left {
+  border-right: 1px solid #6699ff; padding-left: 4px;
+}
+div#nav ul#nav li.middle {
+  border-right: 1px solid #6699ff;
+}
+div#nav ul#nav li.right {
+}
+div#nav ul#nav li a {
+ color:#FFFFFF;
+}
+div#nav li a { color: #7A7777; }
+div#nav li a.current, a.hover { color: #000000; }
+div#nav li.current a:link, div#nav li.current a:visited {
+      color:#000; font-weight: bold;
+}
+div#nav li.current a:hover {  color:#fff; background:#c00; }
+div#nav li a:hover {  color:#fff; background:#c99; }
+
+div#search { 
+  background:#FFF;
+  float: right;  margin: 4px;
+  
+}
+div#search form {
+  
+  background-image: none;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.6) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative; width: 200px; height: 20px; padding: 0;
+}
+div#search form input {
+	  background:#FFF
+  color: #FFFFF; border: 0px; margin: 0; padding: 4px 8px; font-size: 0.9em;
+  background: none repeat scroll 0 0 transparent; width: 260px;
+}
+
+/* Main section */
+div#main { padding: 0; }
+div.breadcrumb { background-color: #EEE; }
+div.breadcrumb ul { margin: 0; padding: 0; list-style-type: none; }
+div.breadcrumb ul li { display: inline-block; padding: 3px 0;}
+div.breadcrumb ul li.home { padding-left: 3px; }
+div.breadcrumb img { vertical-align: top;}
+div.title h2 { 
+  font-size: 1em; 
+  font-weight: normal; 
+  padding-bottom: 0.3em; 
+  border-bottom: solid 1px #EEEEEE; 
+  margin: 0 0 0.5em 0;
+}
+div.title a { text-decoration: underline; }
+table.data { width: 100%; border-collapse: collapse; }
+table.data td { vertical-align: top; }
+table.data a { text-decoration: underline; color: blue; }
+table.data thead td { 
+  background: #E6E6E6 url(jquery.ui/images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; 
+  text-align: center;
+}
+div.action { padding: 5px; background-color: #EEE; }
+div.action form { margin: 0; padding: 0; }
+div.action ul { list-style-type: none; margin: 0; padding: 0; }
+div.action ul li { display: inline; margin-right: 1em; }
+div.action a { font-weight: bold; }
+div.result {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	background-color: #EEE;
+		margin: 0;
+	 padding: 0.5em;
+}
+div.result ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	padding-top: 4px;
+	background-color: #EEE;
+}
+div.result li {
+	display: inline;
+}
+div.result a:link, div.result a:visited { 
+	margin-right: 2px;
+	padding: 3px 10px 2px 10px; 
+	color: #0000FF;
+	background-color: #D3D3D3;
+	text-decoration: none;
+	border-top: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	border-bottom: 1px solid #717171;
+	border-right: 1px solid #717171;
+}
+div.result a:hover {
+	border-top: 1px solid #717171;
+	border-left: 1px solid #717171;
+	border-bottom: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+}
+div.info {
+  margin: 10px 0; padding: 5px 3px; background-color: #EEE;
+}
+div.info a { text-decoration: underline; }
+div.info ul { 
+  list-style: none outside none; padding: 0;  margin: 0;
+}
+div.info ul li { 
+  margin: 0; padding: 0;
+  width: 49%; display: inline-block;
+} 
+div.section, div.section2 { 
+  margin-bottom: 2em; padding: 0 0 0.5em 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+div.section p { margin: 1em; }
+div.section h2, div.section2 h2 { 
+     padding: 0.2em; margin: 0;
+     background: #E6E6E6 url(jquery.ui/images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+     font-size: 1.1em; font-weight:bold;
+ }
+div.section table.info { width: 100%; border-collapse:collapse; }
+div.section table.info td,th { 
+  border: 0px solid #DDD; border-collapse: collapse; padding: 4px; vertical-align: top;
+}
+div.section table.info td.label { 
+  width: 135px; padding-right: 1em; background-color: #F7F7F7;
+  text-align: right; vertical-align: top;
+}
+div#sequence div{ text-align:left; letter-spacing: 0.1em; word-break:break-all; }
+
+/* Foot section */
+#foot { text-align: center; font-size: 11px; clear: both; }
+div#links { margin: 0px 0px 0px 0px; }
+div#links ul { margin: 0px; padding: 0px; list-style-type: none}
+div#copyright { color: #888888 }
+
+/* Form section */
+form { padding: 0; margin: 0; }
+form div.fieldWrapper { margin: 5px 0 5px 0; }
+form div.fieldWrapper label {
+  display: inline-block; 
+  margin-right: 5px; min-width: 10%;
+  text-align: right; vertical-align: top;
+}
+
+form div.fieldWrapper span.indicator {
+  color: red; vertical-align: top;
+}
+form div.fieldWrapper span.separator {
+  vertical-align: top;
+}
+form div.fieldWrapper span.help {
+  vertical-align: top;
+  font-size: 0.8em;
+}
+form div.submit { margin-top: 10px; height: 22px; }
+form input.submit { float: right; }
+form input.content {
+	left:33%;
+	position:absolute;
+	vertical-align: top;
+}
+form span.help {
+	vertical-align: top;
+	left:45%;
+	position: absolute;
+}
