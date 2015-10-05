@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-09-28 05:06:31
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-05 13:01:40
          compiled from "./templates/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:113629771656090317daf775-81195199%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14879437805612acf4bbe570-65250660%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c0360d049dff10f364dfc53ba2cc3958abf6ee6d' => 
     array (
       0 => './templates/index.tpl',
-      1 => 1443431082,
+      1 => 1444063667,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
     array (
       0 => './templates/base.tpl',
-      1 => 1442233274,
+      1 => 1444064137,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '113629771656090317daf775-81195199',
+  'nocache_hash' => '14879437805612acf4bbe570-65250660',
   'function' => 
   array (
   ),
@@ -27,7 +27,9 @@ $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
     <title>DMES:Detect Candidate microRNA from Exogenous Species</title>
+
 
     
     
@@ -111,7 +113,9 @@ ul li {margin: 10px 0;}
     <div class="shadow corner" id="pane">
 
     
+<
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
+
    
     <div id="nav" >
       <div id="search">
@@ -146,7 +150,9 @@ ul li {margin: 10px 0;}
     <div id="tabs-1">
      
       <div style="float: middle;"> 
+
         <img src="static/images/CAP-miRSeq_workflow.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
+
         <input id="b1" type="button" name="Button1" value="Button" onclick="javascript:window.location.href='annotate.php'" class="input_file" style="top:35pt;left:40pt;width:180pt;height:150pt;" title="Motif analysis by your data."/>
                  <input id="b2" type="button" name="Button2" value="Button" onclick="javascript:window.location.href='displayspecies.php'" class="input_file" style="left:40pt;top:210pt;width:180pt;height:150pt;" title="Motif analysis by DOOR database."/>
                          <input id="b5" type="button" name="Button5" value="Button" onclick="javascript:window.location.href='annotate.php#tabs-1'" class="input_file" style="left:250pt;top:60pt;width:220pt;height:100pt;" title="Bobro Submit"/>
@@ -164,8 +170,9 @@ ul li {margin: 10px 0;}
         
 	 <p> 04/04/2014, the paper of DMINDA server has been accepted by <strong>Nucleic Acids Research<strong>.</p>
          <p align="justify"> <br/>
+
      MIiRES (<strong>MicroRNA from exogenous species</strong>) detectect candidate <strong>microRNA</strong> from exogenous microrna by RNA-seq data. This website is freely available to all users and there is no login requirement. This server provides a suite of microRNA analysis functions, which are important to elucidating the mechanism of microrna influence:<br/><br/>  
-   
+
         </p>
     
 
@@ -174,6 +181,7 @@ ul li {margin: 10px 0;}
     <div id="tabs-3">
       <p align="justify"><br/>
         Please cites the following papers if you use the result of the motif finding program:<br>
+
      
       </p>
     </div>

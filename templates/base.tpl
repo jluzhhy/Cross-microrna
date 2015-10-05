@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
     <title>DMES:Detect Candidate microRNA from Exogenous Species</title>
+
 
     {{block name="meta"}}
     {{/block}}
@@ -67,7 +69,9 @@
     <div class="shadow corner" id="pane">
 
     {{block name="head"}}
+<
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
+
    
     <div id="nav" >
       <div id="search">

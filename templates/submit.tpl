@@ -5,6 +5,7 @@
 {{/block}}
 
 {{block name="extra_js"}}
+
  <script type="text/javascript">
 
 
@@ -158,6 +159,7 @@ alert(sData);
 
 {{block name="main"}}
   <style type="text/css">
+
           .input_file{position:absolute;opacity:0;filter:alpha(opacity=0);cursor:pointer;width:385px;height:30px;}  
    #progress_bar {
     margin: 10px 0;
@@ -315,6 +317,7 @@ alert(sData);
      </div>
 
        <div id="emailfd"  class="section" style="position:relative;top:10px;background-color:#DFE0DB;"> 
+
          <h2>Submit job</h2>
          <br/>
          

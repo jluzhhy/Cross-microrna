@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-10-05 07:38:21
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-05 13:01:43
          compiled from "./templates/submit.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:17356387325612612d23ec33-70999261%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14599157005612acf7bf1912-84951575%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '979c6486e465b4b32688b3145057531a784b1731' => 
     array (
       0 => './templates/submit.tpl',
-      1 => 1444045096,
+      1 => 1444063836,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
     array (
       0 => './templates/base.tpl',
-      1 => 1442233274,
+      1 => 1444064137,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '17356387325612612d23ec33-70999261',
+  'nocache_hash' => '14599157005612acf7bf1912-84951575',
   'function' => 
   array (
   ),
@@ -27,7 +27,9 @@ $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
     <title>DMES:Detect Candidate microRNA from Exogenous Species</title>
+
 
     
     
@@ -85,6 +87,7 @@ $_smarty_tpl->decodeProperties(array (
       });
     </script>
     
+
  <script type="text/javascript">
 
 
@@ -242,7 +245,9 @@ alert(sData);
     <div class="shadow corner" id="pane">
 
     
+<
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
+
    
     <div id="nav" >
       <div id="search">
@@ -264,6 +269,7 @@ alert(sData);
     <div id="main">
       
   <style type="text/css">
+
           .input_file{position:absolute;opacity:0;filter:alpha(opacity=0);cursor:pointer;width:385px;height:30px;}  
    #progress_bar {
     margin: 10px 0;
@@ -421,6 +427,7 @@ alert(sData);
      </div>
 
        <div id="emailfd"  class="section" style="position:relative;top:10px;background-color:#DFE0DB;"> 
+
          <h2>Submit job</h2>
          <br/>
          

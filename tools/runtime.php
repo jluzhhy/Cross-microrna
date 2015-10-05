@@ -1,16 +1,19 @@
 #!/usr/bin/env php -q
 
 <?php
+
 require_once("lib/spyc.php");
 require_once("lib/runtimelib.php");
 
 $opts = getopt("rw:");
+
 
 $jobid = basename($opts['w']);
 $tempnam=$opts['w']."/$jobid";
 $info = Spyc::YAMLLoad("{$opts['w']}/info.yaml");
 $info['status'] = 'running';
 $info['jobid']=$jobid;
+
 
 if (array_key_exists('r', $opts))
 { run_micro($opts["w"]);
@@ -28,4 +31,5 @@ if (array_key_exists('e', $opts) && isset($info["email"])&&array_key_exists('r',
 $info['status'] = 'Done';
 $fp = fopen("{$opts['w']}/info.yaml", "w");
 fwrite($fp, Spyc::YAMLDump($info)); fclose($fp);
+
 ?>
