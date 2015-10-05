@@ -1,0 +1,53 @@
+{{extends file="base.tpl"}}
+
+{{block name="extra_js"}}
+<script type="text/javascript">
+  var $J = jQuery.noConflict()
+          
+     $J(document).ready(function() {
+ 
+$J('table.tables').dataTable();
+});
+</script>
+{{/block}}
+
+{{block name="extra_style"}}
+.dataTables_wrapper { min-height: 0; }
+div#tabs div { max-height: 450px; }
+
+ul li {margin: 10px 0;}
+ 
+{{/block}}
+
+{{block name="main"}}
+  {{if $status == "Done"}}
+  
+     {{$content}}
+   
+  {{else}}
+  {{block name="meta"}}
+  <META HTTP-EQUIV="REFRESH" CONTENT="15">
+  {{/block}}
+  
+
+     <div style="text-align: center; font-size:1.2em;"><p>
+  
+    <img src="static/images/busy.gif" /> <br />
+  
+ 
+    Your request is received now.<br>
+    Or you can choose to stay at this page, which will be automatically refreshed every <b>15</b> seconds.<br/>
+
+    
+     Link:&nbsp<a href ="http://csbl.bmb.uga.edu/DMINDA/motif_annotation_prediction.php?jobid={{$jobid}}">http://csbl.bmb.uga.edu/DMINDA/prediction_exogenous.php?jobid={{$jobid}}</a>
+    <br> Yon can remember your jobid <font color="red"> <strong>{{$jobid}}<strong> </font>
+     </p><div>
+ {{/if}}
+   
+{{/block}}
+
+{{block name="foot"}}
+
+
+
+{{/block}}

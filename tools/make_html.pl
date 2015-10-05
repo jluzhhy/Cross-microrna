@@ -1,0 +1,135 @@
+#!/usr/bin/perl
+
+
+
+use Getopt::Std;
+use Cwd;
+use Data::Dumper;
+
+use PDF::API2;              ## needed to create a PDF file
+use Math::Trig;             ## needed for sinus function
+use List::Util qw(min max); ## needed to provide min and max function for lists  
+use File::Basename;
+my %organisms;
+my %rorganisms;
+my ($u, $v);
+while(<DATA>){
+    chomp;
+   
+    if(/^(\S+)\t+(.+)$/){
+		$u=lc($1);
+		$v=lc($2);
+		$u =~ s/ //g;
+		$v =~ s/ //g;
+   
+        $organisms{$u}=$v;
+        $rorganisms{$v}=$u;
+    }
+}
+
+my %hash;
+my $key="";
+open(in,"$ARGV[0]");
+open(out,">$ARGV[1]");
+    while(my $line=<in>)
+      {  chop($line);
+           if($line =~ ".*pdfs_now\/(.*)\.pdf.*/")
+             {    $key=$1;
+                my @arr=split(/\-/,$key);
+                 $hash{"$key"}{"species"}= $arr[0];
+                 $line=<in>;
+                  chop($line);
+                if($line =~ /.*\<td\>(.*)\<\/td\>.*/)
+                {
+                   $hash{"$key"}{"count"}=$1;
+                
+                }
+              }
+          
+            if($line=~/\<table\>\<tr\>\<td WIDTH\=95\>id\<\/td\>/)
+                  {
+                         while($line !~ /\<\/table\>/)
+                            {
+                                $line=<in>;
+                                  chop($line);
+                                    if($line=~/target\=\"\_blank\"\>(.*)\<\/a\>/)
+                                            {
+                                                   $hash{"$key"}{"matureid"}=$hash{"$key"}{"matureid"}."</br>".$1;
+                                            }
+                                    
+
+                            }
+                
+                   }
+              if($line=~/\<td\>\<table\>\<tr\>\<td\>([a|c|g|u]*)\<\/td\>\<\/tr\>\<tr\>\<td\>([a|c|g|u]*)\<\/td\>\<\/tr\>\<\/table\>\<\/td\>/)
+                   {
+                         $hash{"$key"}{"mature"}=$1."</br>".$2;
+                  }
+              elsif($line=~/\<td\>\<table\>\<tr\>\<td\>([a|c|g|u]*)\<\/td\>\<\/tr\>\<\/table\>\<\/td\>/)
+                   {
+                          $hash{"$key"}{"mature"}=$1;
+                   }
+              if($line=~/\<td\>\<table\>\<tr\>\<td\>\-\<\/td\>\<\/tr\>\<\/table\>\<\/td\>/)
+                    {
+                          $line=<in>;
+                           chop($line);
+                          if($line=~/\<td\>(.*)\<\/td\>/)
+                            { $hash{"$key"}{"precursor"}=$1;
+                            }
+                   }
+
+      
+
+      }
+print "<div id=\"tabs\"><ul>\n";
+ foreach $bb (keys(%organisms))
+   {
+     
+       print "<li><a href=\"#$bb\">$bb</a></li>\n";
+
+   }
+print "<li><a href=\"#summary\">summary</a></li></ul>\n";
+ foreach $bb (keys(%organisms))
+   {
+      printtable($bb);
+       print "\n";
+
+   }
+  print "<div id=\"summary\"><table id=\"tab_summary\" class=\"tables\">";
+ print "<thead> <th>name</th> <th>organisms</th> <th>count</th> <th>matureid</th> <th>mature</th> <th>precursor</th></thead><tbody>\n";
+   foreach $aa (keys(%hash))
+    {  
+   print "<tr> <td>$aa</td> <td>$organisms{$hash{$aa}{'species'}}</td> <td>$hash{$aa}{'count'}</td> <td>$hash{$aa}{'matureid'}</td> <td>$hash{$aa}{'mature'}</td> <td>$hash{$aa}{'precursor'}</td></tr>\n";
+     
+    }
+   print "</tbody></table></div>";
+ print "</div>\n";   
+     
+
+sub printtable
+{
+  
+  my($species)=@_;
+   print "<div id=\"$species\"><table id=\"\"  class=\"tables\"> ";
+ print "<thead> <th>name</th> <th>organisms</th> <th>count</th> <th>matureid</th> <th>mature</th> <th>precursor</th></thead>\n<tbody>";
+   foreach $aa (keys(%hash))
+    {  if($hash{$aa}{'species'} eq $species)
+        {
+   print "<tr> <td>$aa</td> <td>$organisms{$species}</td> <td>$hash{$aa}{'count'}</td> <td>$hash{$aa}{'matureid'}</td> <td>$hash{$aa}{'mature'}</td> <td width=\"100\">$hash{$aa}{'precursor'}</td>\n";
+        }
+    }
+   print "</tbody></table></div>";
+}
+__DATA__
+mdm	Malus domestica (apple)
+ssa	Streptococcus sanguinis(salmon fish)
+gga	Gallus gallus (chicken)
+zma	Zea mays (maize)
+vvi	Vitis vinifera (wine grape)
+ssc	Sus scrofa (pig)
+osa	Oryza sativa japonica (Japanese rice)
+gma	Granulicella mallensis
+sly	Solanum lycopersicum (tomato)
+tae	wheat
+csi	orange
+bna	cow
