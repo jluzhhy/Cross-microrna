@@ -140,7 +140,7 @@ reader.onload = function(e)
           data: {data: newdata, filename:filename, seq:ik },
           success: function(data, textStatus, xhr) {
         var percentseq=50/ik;
-        alert(data+"\n"+percentseq);
+      
         if(data<ik)
         { progress.style.width = 50+eval(data)*percentseq+"%";
         progress.textContent =50+eval(data)*percentseq+"%";
