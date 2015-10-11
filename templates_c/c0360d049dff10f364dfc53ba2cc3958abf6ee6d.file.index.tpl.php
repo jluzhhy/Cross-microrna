@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-10-05 13:01:40
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 00:43:55
          compiled from "./templates/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14879437805612acf4bbe570-65250660%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18385042945619e90b8dd8e2-60283082%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c0360d049dff10f364dfc53ba2cc3958abf6ee6d' => 
     array (
       0 => './templates/index.tpl',
-      1 => 1444063667,
+      1 => 1444538172,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
     array (
       0 => './templates/base.tpl',
-      1 => 1444064137,
+      1 => 1444538192,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14879437805612acf4bbe570-65250660',
+  'nocache_hash' => '18385042945619e90b8dd8e2-60283082',
   'function' => 
   array (
   ),
@@ -113,7 +113,7 @@ ul li {margin: 10px 0;}
     <div class="shadow corner" id="pane">
 
     
-<
+
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
 
    
@@ -151,7 +151,7 @@ ul li {margin: 10px 0;}
      
       <div style="float: middle;"> 
 
-        <img src="static/images/CAP-miRSeq_workflow.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
+        <img src="static/images/home_page.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
 
         <input id="b1" type="button" name="Button1" value="Button" onclick="javascript:window.location.href='annotate.php'" class="input_file" style="top:35pt;left:40pt;width:180pt;height:150pt;" title="Motif analysis by your data."/>
                  <input id="b2" type="button" name="Button2" value="Button" onclick="javascript:window.location.href='displayspecies.php'" class="input_file" style="left:40pt;top:210pt;width:180pt;height:150pt;" title="Motif analysis by DOOR database."/>

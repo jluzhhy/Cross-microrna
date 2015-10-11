@@ -69,7 +69,7 @@
     <div class="shadow corner" id="pane">
 
     {{block name="head"}}
-<
+
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
 
    

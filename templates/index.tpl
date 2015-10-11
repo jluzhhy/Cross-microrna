@@ -41,7 +41,7 @@ ul li {margin: 10px 0;}
      
       <div style="float: middle;"> 
 
-        <img src="static/images/CAP-miRSeq_workflow.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
+        <img src="static/images/home_page.png" width="900px" height="444px" style="z-Index:-1;margin-left:30px">
 
         <input id="b1" type="button" name="Button1" value="Button" onclick="javascript:window.location.href='annotate.php'" class="input_file" style="top:35pt;left:40pt;width:180pt;height:150pt;" title="Motif analysis by your data."/>
                  <input id="b2" type="button" name="Button2" value="Button" onclick="javascript:window.location.href='displayspecies.php'" class="input_file" style="left:40pt;top:210pt;width:180pt;height:150pt;" title="Motif analysis by DOOR database."/>

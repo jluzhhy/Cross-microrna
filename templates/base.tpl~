@@ -2,11 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<<<<<<< HEAD
+
     <title>DMES:Detect Candidate microRNA from Exogenous Species</title>
-=======
-    <title>DMINDA: A integrated DNA motif analysis web server</title>
->>>>>>> b77fbded6c543b8f340bdc50a6ee5c5e48d0cf10
+
 
     {{block name="meta"}}
     {{/block}}
@@ -71,11 +69,9 @@
     <div class="shadow corner" id="pane">
 
     {{block name="head"}}
-<<<<<<< HEAD
+<
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
-=======
-    <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/test.png" width="1024px"  alt="logo"/></a></div>
->>>>>>> b77fbded6c543b8f340bdc50a6ee5c5e48d0cf10
+
    
     <div id="nav" >
       <div id="search">

@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-10-05 13:01:43
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 01:43:27
          compiled from "./templates/submit.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14599157005612acf7bf1912-84951575%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18181513185619f6ff9aed90-80059320%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '979c6486e465b4b32688b3145057531a784b1731' => 
     array (
       0 => './templates/submit.tpl',
-      1 => 1444063836,
+      1 => 1444542202,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
     array (
       0 => './templates/base.tpl',
-      1 => 1444064137,
+      1 => 1444538192,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14599157005612acf7bf1912-84951575',
+  'nocache_hash' => '18181513185619f6ff9aed90-80059320',
   'function' => 
   array (
   ),
@@ -99,11 +99,14 @@ var c = 0;
 var id ='';
 var seq = '';
 var processed = 0;
-
+var object=new Set();
 
 $J("#seqdata").change(function(event){
-
+var total=0;
+var discardbyqaulity=0;
+var discardbylength=0;
 document.getElementById("upfile3").value=document.getElementById("seqdata").value;
+var qscore=document.getElementById("qs").value;
 var d=new Date();
 var prefix=d.valueOf();
 $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div id=\""+prefix+"\" class\=\"percent\"  \>0\%\<\/div\>\<\/div\>\<\/li\>");
@@ -123,6 +126,7 @@ $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div i
   }
  var file = document.getElementById("seqdata").files[0];
 var leftsize=file.size;
+
 var buffer=1024*100000;
 var start=0;
 var stop=0;
@@ -145,89 +149,116 @@ reader.onloadstart = function(e) {
       document.getElementById("progress_bar"+prefix).className = 'loading';
     };
 
-reader.onload = function(e) {
+reader.onload = function(e)
+ {
         var text = reader.result;  
         var lines = text.split('\n');
         var hash={};
-    for(var line = 0; line < lines.length; line++){
-     if(lines[line].match(/^\@/))
-    {   
-   
-      
-        var lines2 = lines[line].split();
-          id = lines2[0];
-       
-         //var patt = s/\@//;
-        //id =patt.exec(id);
-     } else if(lines[line].match(/^[A|C|G|T|U]*$/gi) && lines[line].length<= max1 && lines[line].length>= min1)   
-       {
-        seq = lines[line];
-             line++;
-          if(hash[seq] ===undefined)
-          {hash[seq]=1;    }
-          else{hash[seq]=hash[seq]+1;}
-     
-      
-        id ='';
-        seq ='';
-        
-    
-     }
-}
+   for(var line = 0; line < lines.length; line++)
+  	{
+     		if(lines[line].match(/^\@/))
+    		{  
+       		 var lines2 = lines[line].split();
+         	 id = lines2[0];
+     		} 
+     		else if(lines[line].match(/^[A|C|G|T|U]*$/gi))   
+    		 {       total++;
 
-for (var k in hash) {
-    // use hasOwnProperty to filter out keys from the Object.prototype
-    if (hash.hasOwnProperty(k)) {
-      processed++;
-       newdata=newdata+">seq_"+processed+"_x"+hash[k]+"\n"+k+"\n";
-    }
-}
-          var filename=prefix;
+       			 if(lines[line].length<= max1 && lines[line].length>= min1)
+        			 {  seq = lines[line];
+                                    
+          			    line++;
+           		            line++;   
+           			    qaulity=lines[line];
+           				var test=0;
+           					for(var i=0;i<qaulity.length;i++)
+             					{
+                 					if((qaulity.charCodeAt(i)-64)<qscore)
+                          					{      
+                               						test=1;
+                               						discardbyqaulity++;
+                          					}
+            				        }
+                    			if(test==0)
+                   			{
+                       				if(hash[seq] ===undefined)
+                         				{
+                              					 hash[seq]=1;    
+                         				}
+                       				else
+                         				{
+								hash[seq]=hash[seq]+1;
+                         				}
+                    			}
+                     		     id ='';
+                     		     seq ='';
+           			  }
+      			else
+ 				{
+					discardbylength++;
+				}
+        	}
+        }
+       
     
-    
-        //  percent=100/(i-1);
-    
-        // alert(eval($J("#bar").val()));
-       // progress.style.width = parseInt(eval(percentLoaded +percent));
-       // progress.textContent = parseInt(eval(percentLoaded +percent));
-        // $J("#bar").val(eval(percentLoaded +percent));
-      
-    $J.ajax({url: "prepare_file.php",
+	for (var k in hash) 
+	{
+		if (hash.hasOwnProperty(k)) 
+			{
+     				 processed++;
+       				 newdata=newdata+">seq_"+processed+"_x"+hash[k]+"\n"+k+"\n";
+    			}
+	}
+        
+        var filename=prefix;
+         
+         object.add(prefix);
+       $J.ajax({url: "prepare_file.php",
           type: 'POST',
           data: {data: newdata, filename:filename },
           success: function(data) {}
-    });
-   }
-     reader.onprogress = updateProgress;
-    reader.onloadend = function (evt) {
+        });
+
+//alert(discard+"!"+total);
+  
+}
+    
+ reader.onprogress = updateProgress;
+     
+ reader.onloadend = function (evt) 
+    {
           
         progress.style.width = '100%';
         progress.textContent ='100%';
-       progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
+        progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
        
      
-    };
-
-
-      
+    }
+     
      i++;
   
      reader.readAsText(blob);
 
+   }
    
-   
-}
-
 });
 
 
 $J("form").submit(function(form) {
  form.preventDefault();
-var sData =  document.querySelector('.CLASS').$('input').serialize();
+var sData =  $J('.CLASS').serialize();
+var allfile="";
+
+object.forEach(function(value) 
+{
+allfile=allfile+"!"+value;
+});
+
+alert(allfile);
 alert(sData);
  $J.ajax({url: "prepare_job.php",
           type: 'POST',
-          data: { prefix:prefix, species: $J("#species").val(),species2: $J("#species2").val(),email: $J("#email").val() },
+          data: { allfile:allfile, selectedfile:sData, species: $J("#species").val(),species2: $J("#species2").val(),email: $J("#email").val() },
           success: function(data) {window.location.href=data;}
     });
 
@@ -245,7 +276,7 @@ alert(sData);
     <div class="shadow corner" id="pane">
 
     
-<
+
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
 
    
@@ -323,7 +354,7 @@ alert(sData);
               </tr>
                 <tr>
                 <td witdh="200px">&nbsp;Maximal length:</td>
-                <td witdh="200px"><input name="max" type="text" id="max" size="5" value="22" ></input></td>
+                <td witdh="200px"><input name="max" type="text" id="max" size="5" value="300" ></input></td>
                 <td></td>
               </tr>
                  <tr>
@@ -334,7 +365,7 @@ alert(sData);
                 
               <tr>
                 <td witdh="200px">&nbsp;Quality score:</td>
-                <td witdh="200px"><input name="qs" type="text" id="qs" size="5" value="30" ></input></td>
+                <td witdh="200px"><input name="qs" type="text" id="qs" size="5" value="0" ></input></td>
                 <td></td>
               </tr>
             </table>
