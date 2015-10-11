@@ -170,7 +170,7 @@ var allfile="";
 object.forEach(function(value) 
 {
 allfile=allfile+"!"+value;
-}
+});
 
 alert(allfile);
 alert(sData);
