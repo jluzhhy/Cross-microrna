@@ -48,7 +48,7 @@ $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div i
  var file = document.getElementById("seqdata").files[0];
 var leftsize=file.size;
 
-var buffer=1024*200000;
+var buffer=1024*500000;
 var start=0;
 var stop=0;
 var newdata="";
