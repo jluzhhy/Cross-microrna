@@ -8,10 +8,26 @@ require("config/tools.php");
 require("lib/runtimelib.php");
 
 $data=$_POST['data'];
+
 $filename=$_POST['filename'];
  $workdir ="$BASE/upload/";
- $fp = fopen("$workdir/$filename", 'w');
+ $fp = fopen("$workdir/$filename", 'a');
      fwrite($fp, $data); fclose($fp);
-   
-  
+
+
+$fstring=0;
+$fd = fopen ("$workdir/$filename"."log" , "r") or die ("Can't open $filename") ;
+$size= filesize ("$workdir/$filename"."log" );
+if($size!=0)
+{
+
+$fstring = fread ($fd ,$size) ;
+}
+fclose($fd) ;
+
+$fd = fopen ("$workdir/$filename"."log" , "w") or die ("Can't open $filename") ;
+$fcounted = $fstring + 1 ;
+$fout= fwrite ($fd , $fcounted ) ;
+fclose($fd) ;
+print $fcounted;
 ?>

@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 01:43:27
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 04:15:56
          compiled from "./templates/submit.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18181513185619f6ff9aed90-80059320%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:388700249561a1abc5ebd87-97397527%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '979c6486e465b4b32688b3145057531a784b1731' => 
     array (
       0 => './templates/submit.tpl',
-      1 => 1444542202,
+      1 => 1444551345,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
@@ -17,7 +17,7 @@ $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18181513185619f6ff9aed90-80059320',
+  'nocache_hash' => '388700249561a1abc5ebd87-97397527',
   'function' => 
   array (
   ),
@@ -94,7 +94,7 @@ $_smarty_tpl->decodeProperties(array (
  var $J = jQuery.noConflict();
 $J(document).ready(function(){ 
 
-var i=0;
+
 var c = 0;
 var id ='';
 var seq = '';
@@ -111,28 +111,32 @@ var d=new Date();
 var prefix=d.valueOf();
 $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div id=\""+prefix+"\" class\=\"percent\"  \>0\%\<\/div\>\<\/div\>\<\/li\>");
   var progress = document.getElementById(prefix);
+
   function updateProgress(evt) {
     // evt is an ProgressEvent.
       // var percentLoaded = eval($J("#bar").val());
    
     if (evt.lengthComputable) {
-      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+      var percentLoaded = Math.round((evt.loaded / evt.total) * 100 / 2);
       // Increase the progress bar length.
+   
       if (percentLoaded < 100) {
         progress.style.width = percentLoaded + '%';
-        progress.textContent = percentLoaded + '%';
+        progress.textContent =  percentLoaded + '%';
       }
     }
   }
+
  var file = document.getElementById("seqdata").files[0];
 var leftsize=file.size;
 
-var buffer=1024*100000;
+var buffer=1024*200000;
 var start=0;
 var stop=0;
 var newdata="";
 var min1 = document.getElementById("min").value;
 var max1 = document.getElementById("max").value;
+var ik=0;
 while(stop<leftsize)
  { var newdata="";
      var start = stop+1;
@@ -143,7 +147,7 @@ while(stop<leftsize)
    
      var file = document.getElementById("seqdata").files[0];
      var blob = file.slice(start, stop);
-     i++;
+    
      var reader = new FileReader();
 reader.onloadstart = function(e) {
       document.getElementById("progress_bar"+prefix).className = 'loading';
@@ -215,8 +219,22 @@ reader.onload = function(e)
          object.add(prefix);
        $J.ajax({url: "prepare_file.php",
           type: 'POST',
-          data: {data: newdata, filename:filename },
-          success: function(data) {}
+          data: {data: newdata, filename:filename, seq:ik },
+          success: function(data, textStatus, xhr) {
+        var percentseq=50/ik;
+        alert(data+"\n"+percentseq);
+        if(data<ik)
+        { progress.style.width = 50+eval(data)*percentseq+"%";
+        progress.textContent =50+eval(data)*percentseq+"%";
+      
+        }
+        else
+          { progress.style.width = "100%";
+        progress.textContent ="100%";
+                 progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
+           }
+          }   
+          
         });
 
 //alert(discard+"!"+total);
@@ -227,20 +245,19 @@ reader.onload = function(e)
      
  reader.onloadend = function (evt) 
     {
-          
-        progress.style.width = '100%';
-        progress.textContent ='100%';
-        progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
-       
+              progress.style.width = '50%';
+        progress.textContent ='50%';  
      
     }
      
-     i++;
+     ik++;
   
      reader.readAsText(blob);
 
    }
-   
+ 
+       
+     
 });
 
 

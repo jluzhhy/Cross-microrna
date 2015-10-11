@@ -12,7 +12,7 @@
  var $J = jQuery.noConflict();
 $J(document).ready(function(){ 
 
-var i=0;
+
 var c = 0;
 var id ='';
 var seq = '';
@@ -29,19 +29,22 @@ var d=new Date();
 var prefix=d.valueOf();
 $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div id=\""+prefix+"\" class\=\"percent\"  \>0\%\<\/div\>\<\/div\>\<\/li\>");
   var progress = document.getElementById(prefix);
+
   function updateProgress(evt) {
     // evt is an ProgressEvent.
       // var percentLoaded = eval($J("#bar").val());
    
     if (evt.lengthComputable) {
-      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+      var percentLoaded = Math.round((evt.loaded / evt.total) * 100 / 2);
       // Increase the progress bar length.
+   
       if (percentLoaded < 100) {
         progress.style.width = percentLoaded + '%';
-        progress.textContent = percentLoaded + '%';
+        progress.textContent =  percentLoaded + '%';
       }
     }
   }
+
  var file = document.getElementById("seqdata").files[0];
 var leftsize=file.size;
 
@@ -51,6 +54,7 @@ var stop=0;
 var newdata="";
 var min1 = document.getElementById("min").value;
 var max1 = document.getElementById("max").value;
+var ik=0;
 while(stop<leftsize)
  { var newdata="";
      var start = stop+1;
@@ -61,7 +65,7 @@ while(stop<leftsize)
    
      var file = document.getElementById("seqdata").files[0];
      var blob = file.slice(start, stop);
-     i++;
+    
      var reader = new FileReader();
 reader.onloadstart = function(e) {
       document.getElementById("progress_bar"+prefix).className = 'loading';
@@ -133,8 +137,22 @@ reader.onload = function(e)
          object.add(prefix);
        $J.ajax({url: "prepare_file.php",
           type: 'POST',
-          data: {data: newdata, filename:filename },
-          success: function(data) {}
+          data: {data: newdata, filename:filename, seq:ik },
+          success: function(data, textStatus, xhr) {
+        var percentseq=50/ik;
+      
+        if(data<ik)
+        { progress.style.width = 50+eval(data)*percentseq+"%";
+        progress.textContent =50+eval(data)*percentseq+"%";
+      
+        }
+        else
+          { progress.style.width = "100%";
+        progress.textContent ="100%";
+                 progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
+           }
+          }   
+          
         });
 
 //alert(discard+"!"+total);
@@ -145,20 +163,19 @@ reader.onload = function(e)
      
  reader.onloadend = function (evt) 
     {
-          
-        progress.style.width = '100%';
-        progress.textContent ='100%';
-        progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
-       
+              progress.style.width = '50%';
+        progress.textContent ='50%';  
      
     }
      
-     i++;
+     ik++;
   
      reader.readAsText(blob);
 
    }
-   
+ 
+       
+     
 });
 
 
