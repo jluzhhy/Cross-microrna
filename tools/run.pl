@@ -23,15 +23,21 @@ system("export PATH=\$PATH:/home/bin/CAP-miRSEQ/binspace/bin");
 
 #system("perl $Bin/collapse_reads_md.pl  $output/$species\_reads.fa $species > $output/$species\_reads.fa.collapsed");
   system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2precursor.fa --un $output/unalign_reads2precursor.fa --norc $Bin/../referenece/hairpin $output/totalreads.fa $output/reads_mapped2precursor.bwt");
-print STDERR ("totalreads to genome");
- system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2genome.fa --un $output/unalign_reads2genome.fa  $Bin/../referenece/hg38/hg38 $output/totalreads.fa $output/reads_mapped2genome.bwt");
+print STDERR ("totalreads to hsa");
+ system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2hsa.fa --un $output/unalign_reads2hsa.fa  $Bin/../referenece/Homo_sapiens\!human/hsa $output/totalreads.fa $output/reads2hsa.bwt");
 print STDERR ("totalreads to trna");
-system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2trna.fa --un $output/unalign_reads2trna.fa  $Bin/../referenece/trna/trna $output/totalreads.fa $output/reads_mapped2trna.bwt");
+system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2trna.fa --un $output/unalign_reads2trna.fa  $Bin/../referenece/human_trna/trna $output/totalreads.fa $output/reads_mapped2trna.bwt");
 
-print STDERR ("alignreads2precursor to genome");
- system("bowtie  -f -v 1 -a --best --strata  $Bin/../referenece/hg38/hg38 --un $output/unalign_align_reads_precursor2genome.fa $output/align_reads2precursor.fa $output/align_reads_precursor2genome.bwt");
-print STDERR ("unalignreads2precursor to genome");
- system("bowtie  -f -v 1 -a --best --strata  $Bin/../referenece/hg38/hg38 $output/unalign_reads2precursor.fa $output/unalign_reads_precursor2genome.bwt");
+print STDERR("reads to human_all_rna");
+ system("bowtie  -f -v 1 -a --best --strata  $Bin/../referenece/human_all_ncrna/human_rna --al $output/align_reads2hsarna.fa --un $output/unalign_reads2hsarna.fa  $output/totalreads.fa $output/reads2hsarna.bwt");
+print STDERR ("reads to all_rna");
+ system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2allrna.fa --un $output/unalign_reads2allrna.fa $Bin/../referenece/rna/rna1 $output/totalreads.fa $output/reads2allrna1.bwt");
+system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2allrna.fa --un $output/unalign_reads2allrna.fa $Bin/../referenece/rna/rna2 $output/totalreads.fa $output/reads2allrna2.bwt");
+
+print STDERR ("totalreads to bta");
+ system("bowtie  -f -v 1 -a --best --strata --al $output/align_reads2bna.fa --un $output/unalign_reads2bna.fa  $Bin/../referenece/Bos_taurus\!cow/bta $output/totalreads.fa $output/reads2bta.bwt");
+
+
 system("perl $Bin/maketable2.pl -o $output -s $species");
 print STDERR ("perl $Bin/maketable2.pl -o $output -s $species");
 #system("perl $Bin/quantifier.pl -p $Bin/../referenece/hairpin.dna.fa -m $Bin/../referenece/mature.dna.fa -r $output/$species\_reads.fa  -y now -t $species -q $output");
