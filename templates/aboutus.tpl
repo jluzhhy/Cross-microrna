@@ -9,30 +9,18 @@ ul li {margin: 10px 0;}
 <div id="content">
 
 <div class="section">
-  <h2>DMINDA Team</h2>
+  <h2>Sbbi Team</h2>
   <ul>
-    <li>Prof. Ying Xu, xyn at bmb.uga.edu, CSBL</li>
-   
-    <li>Dr. Qin Ma, maqin at uga.edu, CSBL</li>
-
+    <li>Dr. Juan Cui, jcui at cse.unl.edu, SBBI</li>
+  
     <li>Mr. Hanyuan Zhang, jluzhhy at gmail.com, JLU</li>
-     
-    <li>Mr. Chuan Zhou, zhouchuan at mail.sdu.edu.cn, SDU</li>
-    
-    <li>Dr. Bingqiang Liu, bingqiangsdu at gmail.com,SDU </li>
-    
-    <li>Dr. Xizeng Mao,  xizeng at csbl.bmbb.uga.edu, CSBL</li>
-    
-    <li>Mr. Xin Chen, xinchenuga at gmail.com, CSBL</li>
-    
-    <li>Dr. Guojun Li, guojunsdu at gmail.com, SDU</li>
+ 
   </ul>
 
-<p>CSBL: Computational Systems Biology Laboratory 
-Dept. of Biochemistry and Molecular Biology
-University of Georgia, Athens</p>
-<p>JLU: Jilin University</p> 
-<p>SDU: Shandong University</p>
+<p>SBBI: Systems Biology and Biomedical Informatics Lab
+Office: 122B Avery Hall
+      Phone: (402) 472-5023
+      Email: jcui (at) cse (dot) unl (dot) edu</p>
 
 
 </div>

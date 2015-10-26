@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 04:15:56
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 18:27:00
          compiled from "./templates/submit.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:388700249561a1abc5ebd87-97397527%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:350508930561ae23475deb5-80708432%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '979c6486e465b4b32688b3145057531a784b1731' => 
     array (
       0 => './templates/submit.tpl',
-      1 => 1444551345,
+      1 => 1444602417,
       2 => 'file',
     ),
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
@@ -17,7 +17,7 @@ $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '388700249561a1abc5ebd87-97397527',
+  'nocache_hash' => '350508930561ae23475deb5-80708432',
   'function' => 
   array (
   ),
@@ -100,8 +100,9 @@ var id ='';
 var seq = '';
 var processed = 0;
 var object=new Set();
-
+var selectfile=0;
 $J("#seqdata").change(function(event){
+selectfile++;
 var total=0;
 var discardbyqaulity=0;
 var discardbylength=0;
@@ -130,7 +131,7 @@ $J("#file-listing").append("\<li\>\<div id\=\"progress\_bar"+prefix+"\"\>\<div i
  var file = document.getElementById("seqdata").files[0];
 var leftsize=file.size;
 
-var buffer=1024*200000;
+var buffer=1024*300000;
 var start=0;
 var stop=0;
 var newdata="";
@@ -222,7 +223,7 @@ reader.onload = function(e)
           data: {data: newdata, filename:filename, seq:ik },
           success: function(data, textStatus, xhr) {
         var percentseq=50/ik;
-        alert(data+"\n"+percentseq);
+      
         if(data<ik)
         { progress.style.width = 50+eval(data)*percentseq+"%";
         progress.textContent =50+eval(data)*percentseq+"%";
@@ -231,7 +232,8 @@ reader.onload = function(e)
         else
           { progress.style.width = "100%";
         progress.textContent ="100%";
-                 progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?";
+             document.getElementById("upfile3").value="";
+                 progress.innerHTML = document.getElementById("seqdata").value+"    \<input type\=\"checkbox\" name\=\"controls\[\]\" class=\"CLASS\" value\="+prefix+"\<\/\> is control?  \<input type\=\"text\" name\=\"controls2\[\]\" class=\"CLA\" value\=\"sample"+selectfile+"\"\\\>";
            }
           }   
           
@@ -263,20 +265,34 @@ reader.onload = function(e)
 
 $J("form").submit(function(form) {
  form.preventDefault();
-var sData =  $J('.CLASS').serialize();
-var allfile="";
-
+i=0;
+var sData ={}
+$J.each($J('.CLASS').serializeArray(), function() {
+    sData[i]=this.value;
+    i++;
+  
+});  
+i=0;
+var sData2 ={}
+$J.each($J('.CLA').serializeArray(), function() {
+    sData2[i]=this.value;
+    i++;
+  
+}); 
+//var sData2 =  $J('.CLA').serializeArray();
+var allfile=[];
+i=0;
 object.forEach(function(value) 
 {
-allfile=allfile+"!"+value;
+allfile[i]=value;
+i++;
 });
 
-alert(allfile);
-alert(sData);
+
  $J.ajax({url: "prepare_job.php",
           type: 'POST',
-          data: { allfile:allfile, selectedfile:sData, species: $J("#species").val(),species2: $J("#species2").val(),email: $J("#email").val() },
-          success: function(data) {window.location.href=data;}
+          data: { allfile:allfile, selectedfile:sData,tags:sData2, species: $J("#species").val(),species2: $J("#species2").val(),email: $J("#email").val() },
+          success: function(data) {window.location.href=data;alert(data);}
     });
 
  

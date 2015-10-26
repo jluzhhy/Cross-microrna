@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-09-23 07:30:07
+<?php /* Smarty version Smarty-3.0.7, created on 2015-10-11 19:24:15
          compiled from "./templates/prediction_exogenous.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:183203599256028d3f35f577-08698528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_smarty_tpl->decodeProperties(array (
     'd727a2f7c0bda098bc7da6c28169b69f69e5ee74' => 
     array (
       0 => './templates/base.tpl',
-      1 => 1442233274,
+      1 => 1444538192,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,9 @@ $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
     <title>DMES:Detect Candidate microRNA from Exogenous Species</title>
+
 
     
     
@@ -105,7 +107,9 @@ $J('table.tables').dataTable();
     <div class="shadow corner" id="pane">
 
     
+
     <div style="position:relative;left:0px;top:0px;z-Index:0;"><a href="index.php"><img src="static/images/head.png" width="1024px" height="200px" alt="logo"/></a></div>
+
    
     <div id="nav" >
       <div id="search">
